@@ -1,0 +1,22 @@
+{
+  "name": "thats-my-slam",
+  "version": "0.0.1",
+  "description": "Slammer App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/planavsky82/thats-my-slam.git"
+  },
+  "author": "Tom Altieri, Anthony Planavsky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/planavsky82/thats-my-slam/issues"
+  },
+  "homepage": "https://github.com/planavsky82/thats-my-slam#readme",
+  "dependencies": {
+    "firebase": "^11.2.0"
+  }
+}
