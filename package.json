@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "firebase deploy",
-    "login": "firebase login --reauth"
+    "login": "firebase login --reauth",
+    "run:emulator": "firebase emulators:start"
   },
   "repository": {
     "type": "git",
