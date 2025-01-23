@@ -8,7 +8,7 @@
  */
 
 import * as functions from "firebase-functions";
-// import * as admin from "firebase-admin";
+import admin from "firebase-admin";
 import express = require("express")
 import cors = require("cors");
 import {onRequest} from "firebase-functions/v2/https";
@@ -23,16 +23,20 @@ app.use(cors({
   "optionsSuccessStatus": 204,
 }));
 
-// admin.initializeApp({
-//   credential: admin.credential.applicationDefault(),
-//   databaseURL: "https://thats-my-slam.firebaseio.com/"
-// });
+admin.initializeApp({
+  credential: admin.credential.applicationDefault(),
+  databaseURL: "https://thats-my-slam-default-rtdb.firebaseio.com",
+});
 
 app.listen(port, () => {
   console.log("Listening to port: " + port);
 });
 
 app.get("/test", (req, res) => {
+  admin.database().ref("/notifications").once("value")
+    .then((snapshot) => {
+      console.log(snapshot.val());
+    });
   res.json({result: "test ABC"});
 });
 
