@@ -7,11 +7,11 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
-import * as functions from 'firebase-functions';
-// import * as admin from 'firebase-admin';
-import express = require('express')
-import cors = require('cors');
-import { onRequest } from "firebase-functions/v2/https";
+import * as functions from "firebase-functions";
+// import * as admin from "firebase-admin";
+import express = require("express")
+import cors = require("cors");
+import {onRequest} from "firebase-functions/v2/https";
 
 const app: express.Application = express();
 const port = 3000;
@@ -20,19 +20,19 @@ app.use(cors({
   "origin": "*",
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
   "preflightContinue": false,
-  "optionsSuccessStatus": 204
+  "optionsSuccessStatus": 204,
 }));
 
 // admin.initializeApp({
 //   credential: admin.credential.applicationDefault(),
-//   databaseURL: 'https://thats-my-slam.firebaseio.com/'
-// }); 
+//   databaseURL: "https://thats-my-slam.firebaseio.com/"
+// });
 
 app.listen(port, () => {
-  console.log('Listening to port: ' + port);
+  console.log("Listening to port: " + port);
 });
 
-app.get('/test', (req, res) => {
+app.get("/test", (req, res) => {
   res.json({result: "test ABC"});
 });
 
@@ -66,6 +66,6 @@ exports.getData = onRequest(async (req, res) => {
 //   const writeResult = await getFirestore()
 //     .collection("messages")
 //     .add({original: original});
-//   // Send back a message that we've successfully written the message
+//   // Send back a message that we"ve successfully written the message
 //   res.json({result: `Message with ID: ${writeResult.id} added.`});
 // });
