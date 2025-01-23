@@ -7,7 +7,42 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
-import {onRequest} from "firebase-functions/v2/https";
+import * as functions from 'firebase-functions';
+// import * as admin from 'firebase-admin';
+import express = require('express')
+import cors = require('cors');
+import { onRequest } from "firebase-functions/v2/https";
+
+const app: express.Application = express();
+const port = 3000;
+
+app.use(cors({
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204
+}));
+
+// admin.initializeApp({
+//   credential: admin.credential.applicationDefault(),
+//   databaseURL: 'https://thats-my-slam.firebaseio.com/'
+// }); 
+
+app.listen(port, () => {
+  console.log('Listening to port: ' + port);
+});
+
+app.get('/test', (req, res) => {
+  res.json({result: "test ABC"});
+});
+
+exports.app = functions.https.onRequest(app);
+
+// public URL: https://us-central1-thats-my-slam.cloudfunctions.net/getData
+exports.getData = onRequest(async (req, res) => {
+  res.json({result: "test 123"});
+});
+
 // import * as logger from "firebase-functions/logger";
 // import {initializeApp} from "firebase-admin/app";
 // import {getFirestore} from "firebase-admin/firestore";
@@ -34,8 +69,3 @@ import {onRequest} from "firebase-functions/v2/https";
 //   // Send back a message that we've successfully written the message
 //   res.json({result: `Message with ID: ${writeResult.id} added.`});
 // });
-
-// public URL: https://us-central1-thats-my-slam.cloudfunctions.net/getData
-exports.getData = onRequest(async (req, res) => {
-  res.json({result: "test 123"});
-});
