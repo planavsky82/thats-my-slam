@@ -8,7 +8,8 @@
     "deploy": "firebase deploy",
     "deploy:functions": "firebase deploy --only functions",
     "login": "firebase login --reauth",
-    "run:emulator": "cd functions && npm run build && cd ../ && firebase emulators:start"
+    "run:emulator": "cd functions && npm run build && cd ../ && firebase emulators:start",
+    "run:ui": "npm i -g http-server && http-server"
   },
   "repository": {
     "type": "git",
